@@ -1,26 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { fetchUsers } from "./actions/users";
 import logo from "./logo.svg";
 import "./App.css";
 
-const App = ({ fetchUsers, users }) => {
+const App = ({ fetch, users }) => {
+  const [page, setPage] = useState(0);
+
   useEffect(() => {
-    fetchUsers();
+    fetch(page);
   }, []);
 
-  return users && users.users
-    ? users.users.map((user, index) => {
-        return (
-          <div key={index}>
-            <span>{user.name.first}</span>
-            <span>{user.name.last}</span>
-            <span>{user.email}</span>
-          </div>
-        );
-      })
-    : null;
+  return (
+    <div>
+      {users &&
+        users.users &&
+        users.users.map((user, index) => {
+          return (
+            <div key={index}>
+              <span>{user.name.first}</span>
+              <span>{user.name.last}</span>
+              <span>{user.email}</span>
+            </div>
+          );
+        })}
+    </div>
+  );
   /*
   return (
     <div className="App">
@@ -48,7 +54,7 @@ export default compose(
       return { users: state.users };
     },
     (dispatch) => ({
-      fetchUsers: () => dispatch(fetchUsers()),
+      fetch: (page) => dispatch(fetchUsers(page)),
     })
   )
 )(App);
