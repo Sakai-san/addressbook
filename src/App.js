@@ -1,54 +1,66 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { InfiniteLoader, List } from "react-virtualized";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { fetchUsers } from "./actions/users";
-import logo from "./logo.svg";
 import "./App.css";
+import "react-virtualized/styles.css"; // only needs to be imported once
 
-const App = ({ fetch, users }) => {
-  const [page, setPage] = useState(0);
+const App = () => {
+  const currentPage = useRef(-1);
+  const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
-    fetch(page);
+    loadMoreRows({});
   }, []);
 
+  const isRowLoaded = ({ index }) => {
+    return !!allUsers[index];
+  };
+
+  const loadMoreRows = ({ startIndex, stopIndex }) => {
+    currentPage.current = currentPage + 1;
+    console.log("loadMoreRows", startIndex, stopIndex);
+    return fetch(`https://randomuser.me/api/?page=${currentPage}&results=20`)
+      .then((r) => r.json())
+      .then((r) => setAllUsers(allUsers.concat(r.results)));
+  };
+
+  const rowRenderer = ({ key, index, style }) => {
+    return (
+      <div key={key} style={style}>
+        <span>&nbsp;&nbsp;&nbsp;{key}</span>
+        <span>&nbsp;&nbsp;&nbsp;{allUsers[index].name.first}</span>
+        <span>&nbsp;&nbsp;&nbsp;{allUsers[index].name.last}</span>
+        <span>&nbsp;&nbsp;&nbsp;{allUsers[index].email}</span>
+      </div>
+    );
+  };
+
   return (
-    <div>
-      {users &&
-        users.users &&
-        users.users.map((user, index) => {
-          return (
-            <div key={index}>
-              <span>{user.name.first}</span>
-              <span>{user.name.last}</span>
-              <span>{user.email}</span>
-            </div>
-          );
-        })}
-    </div>
+    <InfiniteLoader
+      isRowLoaded={isRowLoaded}
+      loadMoreRows={loadMoreRows}
+      rowCount={500}
+    >
+      {({ onRowsRendered, registerChild }) => (
+        <List
+          height={180}
+          onRowsRendered={onRowsRendered}
+          ref={registerChild}
+          rowCount={allUsers.length}
+          rowHeight={30}
+          rowRenderer={rowRenderer}
+          width={1024}
+        />
+      )}
+    </InfiniteLoader>
   );
-  /*
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );*/
 };
 
-export default compose(
+export default App;
+
+/*compose(
   connect(
     (state) => {
       return { users: state.users };
@@ -58,3 +70,4 @@ export default compose(
     })
   )
 )(App);
+*/
