@@ -1,19 +1,22 @@
-import { FETCH_USERS, FETCHING_USERS } from "../actions/users";
+import { FETCH_USERS, FETCHING_USERS, IUserAction } from "../actions/users";
 
 export default (
   state = {
     users: [],
+    isFetching: false,
   },
-  action
+  action: IUserAction
 ) => {
   if (action.type === FETCHING_USERS) {
     return {
       ...state,
-      isFetching: action.isFetching,
+      // @ts-ignore
+      isFetching: action.payload,
     };
   } else if (action.type === FETCH_USERS) {
     return {
-      users: [...state.users, ...action.users],
+      // @ts-ignore
+      users: [...state.users, ...action.payload],
       isFetching: false,
     };
   } else {
