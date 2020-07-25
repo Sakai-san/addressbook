@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { InfiniteLoader, List } from "react-virtualized";
 import { compose } from "redux";
 import { connect } from "react-redux";
@@ -6,33 +6,32 @@ import { fetchUsers } from "./actions/users";
 import "./App.css";
 import "react-virtualized/styles.css"; // only needs to be imported once
 
-const App = () => {
-  const currentPage = useRef(-1);
-  const [allUsers, setAllUsers] = useState([]);
+const AMOUNT_OF_ROWS = 10;
+
+const App = ({ users, fetchUsers }) => {
+  console.log("users", users);
+  const page = useRef(-1);
 
   useEffect(() => {
     loadMoreRows({});
   }, []);
 
   const isRowLoaded = ({ index }) => {
-    return !!allUsers[index];
+    return !!users[index];
   };
 
   const loadMoreRows = ({ startIndex, stopIndex }) => {
-    currentPage.current = currentPage + 1;
-    console.log("loadMoreRows", startIndex, stopIndex);
-    return fetch(`https://randomuser.me/api/?page=${currentPage}&results=20`)
-      .then((r) => r.json())
-      .then((r) => setAllUsers(allUsers.concat(r.results)));
+    page.current = page.current + 1;
+    return fetchUsers(page.current, AMOUNT_OF_ROWS);
   };
 
   const rowRenderer = ({ key, index, style }) => {
     return (
       <div key={key} style={style}>
         <span>&nbsp;&nbsp;&nbsp;{key}</span>
-        <span>&nbsp;&nbsp;&nbsp;{allUsers[index].name.first}</span>
-        <span>&nbsp;&nbsp;&nbsp;{allUsers[index].name.last}</span>
-        <span>&nbsp;&nbsp;&nbsp;{allUsers[index].email}</span>
+        <span>&nbsp;&nbsp;&nbsp;{users[index].name.first}</span>
+        <span>&nbsp;&nbsp;&nbsp;{users[index].name.last}</span>
+        <span>&nbsp;&nbsp;&nbsp;{users[index].email}</span>
       </div>
     );
   };
@@ -48,7 +47,7 @@ const App = () => {
           height={180}
           onRowsRendered={onRowsRendered}
           ref={registerChild}
-          rowCount={allUsers.length}
+          rowCount={users.length}
           rowHeight={30}
           rowRenderer={rowRenderer}
           width={1024}
@@ -58,16 +57,14 @@ const App = () => {
   );
 };
 
-export default App;
-
-/*compose(
+export default compose(
   connect(
     (state) => {
-      return { users: state.users };
+      return { users: state.users.users };
     },
     (dispatch) => ({
-      fetch: (page) => dispatch(fetchUsers(page)),
+      fetchUsers: (page, amountOfRows) =>
+        dispatch(fetchUsers(page, amountOfRows)),
     })
   )
 )(App);
-*/

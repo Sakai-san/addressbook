@@ -1,6 +1,11 @@
 import { FETCH_USERS, FETCHING_USERS } from "../actions/users";
 
-export default (state = {}, action) => {
+export default (
+  state = {
+    users: [],
+  },
+  action
+) => {
   if (action.type === FETCHING_USERS) {
     return {
       ...state,
@@ -8,7 +13,7 @@ export default (state = {}, action) => {
     };
   } else if (action.type === FETCH_USERS) {
     return {
-      users: action.users,
+      users: [...state.users, ...action.users],
       isFetching: false,
     };
   } else {
