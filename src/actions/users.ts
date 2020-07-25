@@ -1,15 +1,17 @@
-export const FETCH_USERS = "users/fetch";
-export const FETCHING_USERS = "users/fetching";
+export enum actionTypes {
+  FETCH_USERS = "@USERS/fetch",
+  FETCHING_USERS = "@USERS/fetching",
+}
 
-export interface IUserAction {
-  type: typeof FETCH_USERS | typeof FETCHING_USERS;
-  playload: any[] | boolean;
+export interface IAction {
+  type: actionTypes;
+  payload: any[] | boolean;
 }
 
 export const fetchUsers = (page: number, amountOfRows: number) => {
   return (dispatch: any) => {
     dispatch({
-      type: FETCHING_USERS,
+      type: actionTypes.FETCHING_USERS,
       payload: true,
     });
 
@@ -17,7 +19,7 @@ export const fetchUsers = (page: number, amountOfRows: number) => {
       .then((r) => r.json())
       .then((data) => {
         dispatch({
-          type: FETCH_USERS,
+          type: actionTypes.FETCH_USERS,
           payload: data.results,
         });
       });

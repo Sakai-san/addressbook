@@ -1,22 +1,17 @@
 import React, { FunctionComponent, useEffect, useRef } from "react";
 import { InfiniteLoader, List } from "react-virtualized";
-import { compose } from "redux";
-import { useSelector, useDispatch, connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers } from "./actions/users";
 import "./App.css";
 import "react-virtualized/styles.css"; // only needs to be imported once
 
 const AMOUNT_OF_ROWS = 10;
 
-interface IAppProps {
-  users?: any[];
-  fetchUsers?: (page: number, amountOfRows: number) => void;
-}
-
-// @ts-ignore
-const App: FunctionComponent = ({ users, fetchUsers }) => {
-  console.log("users", users);
+const App: FunctionComponent = () => {
   const page = useRef(-1);
+  const users = useSelector((state) => (state as any)?.users?.users);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     loadMoreRows({});
@@ -28,7 +23,7 @@ const App: FunctionComponent = ({ users, fetchUsers }) => {
 
   const loadMoreRows = ({ startIndex, stopIndex }: any) => {
     page.current = page.current + 1;
-    return fetchUsers(page.current, AMOUNT_OF_ROWS);
+    return dispatch(fetchUsers(page.current, AMOUNT_OF_ROWS));
   };
 
   const rowRenderer = ({ key, index, style }: any) => {
@@ -64,17 +59,4 @@ const App: FunctionComponent = ({ users, fetchUsers }) => {
   );
 };
 
-export default compose(
-  connect<any, any>(
-    (state) => {
-      // @ts-ignore
-      return { users: state?.users?.users || [] };
-    },
-    (dispatch) => ({
-      fetchUsers: (page: number, amountOfRows: number) => {
-        // @ts-ignore
-        dispatch(fetchUsers(page, amountOfRows));
-      },
-    })
-  )
-)(App);
+export default App;
