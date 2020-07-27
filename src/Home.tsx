@@ -11,6 +11,7 @@ const AMOUNT_OF_ROWS = 10;
 const Home: FunctionComponent = () => {
   const page = useRef(-1);
   const users = useSelector((state) => (state as any)?.users?.users);
+  const nationality = useSelector((state) => (state as any)?.settings);
 
   const dispatch = useDispatch();
 
@@ -24,16 +25,18 @@ const Home: FunctionComponent = () => {
 
   const loadMoreRows = ({ startIndex, stopIndex }: any) => {
     page.current = page.current + 1;
-    return dispatch(fetchUsers(page.current, AMOUNT_OF_ROWS));
+    return dispatch(fetchUsers(page.current, nationality, AMOUNT_OF_ROWS));
   };
 
   const rowRenderer = ({ key, index, style }: any) => {
     return (
       <div key={key} style={style}>
+        <img src={users[index].picture.thumbnail} />
         <span>&nbsp;&nbsp;&nbsp;{key}</span>
         <span>&nbsp;&nbsp;&nbsp;{users[index].name.first}</span>
         <span>&nbsp;&nbsp;&nbsp;{users[index].name.last}</span>
         <span>&nbsp;&nbsp;&nbsp;{users[index].email}</span>
+        <span>&nbsp;&nbsp;&nbsp;{users[index].nat}</span>
       </div>
     );
   };
@@ -56,7 +59,7 @@ const Home: FunctionComponent = () => {
             onRowsRendered={onRowsRendered}
             ref={registerChild}
             rowCount={users.length}
-            rowHeight={30}
+            rowHeight={45}
             rowRenderer={rowRenderer}
             width={1024}
           />

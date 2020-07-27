@@ -8,14 +8,20 @@ export interface IAction {
   payload: any[] | boolean;
 }
 
-export const fetchUsers = (page: number, amountOfRows: number) => {
+export const fetchUsers = (
+  page: number,
+  nationality: string,
+  amountOfRows: number
+) => {
   return (dispatch: any) => {
     dispatch({
       type: actionTypes.FETCHING_USERS,
       payload: true,
     });
 
-    fetch(`https://randomuser.me/api/?page=${page}&results=${amountOfRows}`)
+    fetch(
+      `https://randomuser.me/api/?nat=${nationality}&page=${page}&results=${amountOfRows}`
+    )
       .then((r) => r.json())
       .then((data) => {
         dispatch({
