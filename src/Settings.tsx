@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setNationality } from "./actions/settings";
 
 const Settings: FunctionComponent = () => {
   const dispatch = useDispatch();
+  const nationalitySet = useSelector((state) => (state as any)?.settings);
   const onClickHandler = (e: any) => dispatch(setNationality(e.target.value));
 
   return (
@@ -20,6 +21,7 @@ const Settings: FunctionComponent = () => {
             type="radio"
             name="nationality"
             value="ch"
+            checked={"ch" === nationalitySet}
             onChange={onClickHandler}
           />
         </label>
@@ -32,6 +34,7 @@ const Settings: FunctionComponent = () => {
             type="radio"
             name="nationality"
             value="es"
+            checked={"es" === nationalitySet}
             onChange={onClickHandler}
           />
         </label>
@@ -44,6 +47,7 @@ const Settings: FunctionComponent = () => {
             type="radio"
             name="nationality"
             value="fr"
+            checked={"fr" === nationalitySet}
             onChange={onClickHandler}
           />
         </label>
@@ -56,6 +60,7 @@ const Settings: FunctionComponent = () => {
             type="radio"
             name="nationality"
             value="gb"
+            checked={"gb" === nationalitySet}
             onChange={onClickHandler}
           />
         </label>
