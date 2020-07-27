@@ -2,12 +2,12 @@ import React, { FunctionComponent, useEffect, useRef } from "react";
 import { InfiniteLoader, List } from "react-virtualized";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers } from "./actions/users";
-import "./App.css";
+
 import "react-virtualized/styles.css"; // only needs to be imported once
 
 const AMOUNT_OF_ROWS = 10;
 
-const App: FunctionComponent = () => {
+const Home: FunctionComponent = () => {
   const page = useRef(-1);
   const users = useSelector((state) => (state as any)?.users?.users);
 
@@ -59,4 +59,4 @@ const App: FunctionComponent = () => {
   );
 };
 
-export default App;
+export default Home;
