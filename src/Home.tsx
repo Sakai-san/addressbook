@@ -6,7 +6,7 @@ import { fetchUsers } from "./actions/users";
 
 import "react-virtualized/styles.css"; // only needs to be imported once
 
-const AMOUNT_OF_ROWS = 10;
+const AMOUNT_OF_ROWS = 50;
 
 const Home: FunctionComponent = () => {
   const page = useRef<number>(-1);
