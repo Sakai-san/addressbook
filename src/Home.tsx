@@ -30,7 +30,10 @@ const Home: FunctionComponent = () => {
 
   const rowRenderer = ({ key, index, style }: any) => {
     return (
-      <div key={key} style={style}>
+      <div
+        key={key}
+        style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
+      >
         <img src={users[index].picture.thumbnail} />
         <span>&nbsp;&nbsp;&nbsp;{key}</span>
         <span>&nbsp;&nbsp;&nbsp;{users[index].name.first}</span>
@@ -51,11 +54,11 @@ const Home: FunctionComponent = () => {
         isRowLoaded={isRowLoaded}
         // @ts-ignore
         loadMoreRows={loadMoreRows}
-        rowCount={500}
+        rowCount={1000}
       >
         {({ onRowsRendered, registerChild }) => (
           <List
-            height={180}
+            height={45 * 10}
             onRowsRendered={onRowsRendered}
             ref={registerChild}
             rowCount={users.length}
