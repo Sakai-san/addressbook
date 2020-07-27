@@ -58,11 +58,11 @@ const Home: FunctionComponent = () => {
       >
         {({ onRowsRendered, registerChild }) => (
           <List
-            height={45 * 10}
+            height={50 * 10}
             onRowsRendered={onRowsRendered}
             ref={registerChild}
             rowCount={users.length}
-            rowHeight={45}
+            rowHeight={50}
             rowRenderer={rowRenderer}
             width={1024}
           />
