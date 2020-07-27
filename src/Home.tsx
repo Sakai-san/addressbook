@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { InfiniteLoader, List } from "react-virtualized";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers } from "./actions/users";
@@ -38,24 +39,30 @@ const Home: FunctionComponent = () => {
   };
 
   return (
-    <InfiniteLoader
-      isRowLoaded={isRowLoaded}
-      // @ts-ignore
-      loadMoreRows={loadMoreRows}
-      rowCount={500}
-    >
-      {({ onRowsRendered, registerChild }) => (
-        <List
-          height={180}
-          onRowsRendered={onRowsRendered}
-          ref={registerChild}
-          rowCount={users.length}
-          rowHeight={30}
-          rowRenderer={rowRenderer}
-          width={1024}
-        />
-      )}
-    </InfiniteLoader>
+    <div>
+      <div className="link-to-settings">
+        <Link to="/settings">Settings</Link>
+      </div>
+
+      <InfiniteLoader
+        isRowLoaded={isRowLoaded}
+        // @ts-ignore
+        loadMoreRows={loadMoreRows}
+        rowCount={500}
+      >
+        {({ onRowsRendered, registerChild }) => (
+          <List
+            height={180}
+            onRowsRendered={onRowsRendered}
+            ref={registerChild}
+            rowCount={users.length}
+            rowHeight={30}
+            rowRenderer={rowRenderer}
+            width={1024}
+          />
+        )}
+      </InfiniteLoader>
+    </div>
   );
 };
 
