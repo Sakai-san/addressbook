@@ -9,7 +9,7 @@ import "react-virtualized/styles.css"; // only needs to be imported once
 const AMOUNT_OF_ROWS = 10;
 
 const Home: FunctionComponent = () => {
-  const page = useRef(-1);
+  const page = useRef<number>(-1);
   const users = useSelector((state) => (state as any)?.users?.users);
   const nationality = useSelector((state) => (state as any)?.settings);
 
