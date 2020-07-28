@@ -12,6 +12,7 @@ const Row = ({ user, reactVirtualizedKey, style }: any) => {
   return (
     <>
       <div
+        className="Row"
         style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
         onClick={(e) => setIsModalVisible(true)}
       >
@@ -28,11 +29,17 @@ const Row = ({ user, reactVirtualizedKey, style }: any) => {
           <span className="Close" onClick={clickModalHandler}>
             X
           </span>
-          <div>&nbsp;&nbsp;&nbsp;{reactVirtualizedKey}</div>
-          <div>&nbsp;&nbsp;&nbsp;{user.name.first}</div>
-          <div>&nbsp;&nbsp;&nbsp;{user.name.last}</div>
-          <div>&nbsp;&nbsp;&nbsp;{user.email}</div>
-          <div>&nbsp;&nbsp;&nbsp;{user.nat}</div>
+          <div className="Modal-content">
+            <div>
+              {user.location.street.number}, {user.location.street.name}
+            </div>
+            <div>
+              {user.location.postcode}, {user.location.city}
+            </div>
+            <div>{user.location.state}</div>
+            <div>{user.phone}</div>
+            <div>{user.cell}</div>
+          </div>
         </div>
       )}
     </>

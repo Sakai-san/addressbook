@@ -1,5 +1,12 @@
+.Row {
+  cursor: pointer;
+}
+.Row:hover {
+  background-color: #ccc;
+}
+
 .Modal {
-  border: 1px solid red;
+  border: 1px solid black;
   background: #fdfdfd;
   position: absolute;
   left: 100px;
@@ -7,10 +14,17 @@
   z-index: 1;
 }
 
+.Modal-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  padding: 10px;
+}
+
 .Close {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 5px;
+  top: 5px;
   color: red;
-  font-size: 30px;
+  font-size: 40px;
 }
