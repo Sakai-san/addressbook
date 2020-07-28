@@ -1,0 +1,16 @@
+.Modal {
+  border: 1px solid red;
+  background: #fdfdfd;
+  position: absolute;
+  left: 100px;
+  top: 200px;
+  z-index: 1;
+}
+
+.Close {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  color: red;
+  font-size: 30px;
+}

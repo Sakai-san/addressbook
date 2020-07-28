@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Row from "../Row";
 import { InfiniteLoader, List } from "react-virtualized";
 import { useSelector, useDispatch } from "react-redux";
 import { homeOperations } from "./index";
@@ -30,21 +31,14 @@ const Home: FunctionComponent = () => {
     );
   };
 
-  const rowRenderer = ({ key, index, style }: any) => {
-    return (
-      <div
-        key={key}
-        style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
-      >
-        <img src={users[index].picture.thumbnail} />
-        <span>&nbsp;&nbsp;&nbsp;{key}</span>
-        <span>&nbsp;&nbsp;&nbsp;{users[index].name.first}</span>
-        <span>&nbsp;&nbsp;&nbsp;{users[index].name.last}</span>
-        <span>&nbsp;&nbsp;&nbsp;{users[index].email}</span>
-        <span>&nbsp;&nbsp;&nbsp;{users[index].nat}</span>
-      </div>
-    );
-  };
+  const rowRenderer = ({ key, index, style }: any) => (
+    <Row
+      key={key}
+      user={users[index]}
+      reactVirtualizedKey={key}
+      style={style}
+    />
+  );
 
   return (
     <div>
