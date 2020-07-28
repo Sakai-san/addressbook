@@ -10,7 +10,7 @@ const AMOUNT_OF_ROWS = 50;
 
 const Home: FunctionComponent = () => {
   const page = useRef<number>(-1);
-  const users = useSelector((state) => (state as any)?.users?.users);
+  const users = useSelector((state) => (state as any)?.home.users);
   const nationality = useSelector((state) => (state as any)?.settings);
 
   const dispatch = useDispatch();
