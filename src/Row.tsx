@@ -6,24 +6,24 @@ const Row = ({ user, reactVirtualizedKey, style }: any) => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const clickModalHandler = (e: any) => {
+    e.stopPropagation();
     setIsModalVisible(false);
   };
 
   return (
-    <>
-      <div
-        className="Row"
-        style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
-        onClick={(e) => setIsModalVisible(true)}
-      >
-        <img src={user.picture.thumbnail} />
-        <span>&nbsp;&nbsp;&nbsp;{reactVirtualizedKey}</span>
-        <span>&nbsp;&nbsp;&nbsp;{user.name.first}</span>
-        <span>&nbsp;&nbsp;&nbsp;{user.name.last}</span>
-        <span>&nbsp;&nbsp;&nbsp;{user.email}</span>
-        <span>&nbsp;&nbsp;&nbsp;{user.nat}</span>
-      </div>
-
+    <div
+      className="Row"
+      style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
+      onClick={(e) => {
+        setIsModalVisible(true);
+      }}
+    >
+      <img src={user.picture.thumbnail} />
+      <span>&nbsp;&nbsp;&nbsp;{reactVirtualizedKey}</span>
+      <span>&nbsp;&nbsp;&nbsp;{user.name.first}</span>
+      <span>&nbsp;&nbsp;&nbsp;{user.name.last}</span>
+      <span>&nbsp;&nbsp;&nbsp;{user.email}</span>
+      <span onClick={clickModalHandler}>&nbsp;&nbsp;&nbsp;{user.nat}</span>
       {isModalVisible && (
         <div className="Modal">
           <span className="Close" onClick={clickModalHandler}>
@@ -42,7 +42,7 @@ const Row = ({ user, reactVirtualizedKey, style }: any) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
