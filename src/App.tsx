@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from "./Home";
-import Settings from "./Settings";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./Home/HomeComponent";
+import Settings from "./Settings/SettingsComponent";
 
 import "./App.css";
 

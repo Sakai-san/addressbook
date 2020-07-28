@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { InfiniteLoader, List } from "react-virtualized";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUsers } from "./actions/users";
+import { homeOperations } from "./index";
 
 import "react-virtualized/styles.css"; // only needs to be imported once
 
@@ -25,7 +25,9 @@ const Home: FunctionComponent = () => {
 
   const loadMoreRows = ({ startIndex, stopIndex }: any) => {
     page.current = page.current + 1;
-    return dispatch(fetchUsers(page.current, nationality, AMOUNT_OF_ROWS));
+    return dispatch(
+      homeOperations.fetchUsers(page.current, nationality, AMOUNT_OF_ROWS)
+    );
   };
 
   const rowRenderer = ({ key, index, style }: any) => {
