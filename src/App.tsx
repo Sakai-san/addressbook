@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Home/HomeComponent";
-import Settings from "./Settings/SettingsComponent";
+import HomeComponent from "./Home/HomeComponent";
+import SettingsComponent from "./Settings/SettingsComponent";
 
 import "./App.css";
 
@@ -10,10 +10,10 @@ const App: FunctionComponent = () => (
     <Router>
       <Switch>
         <Route path="/settings">
-          <Settings />
+          <SettingsComponent />
         </Route>
         <Route path="/">
-          <Home />
+          <HomeComponent />
         </Route>
       </Switch>
     </Router>

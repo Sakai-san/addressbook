@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import Row from "../Row";
 import { InfiniteLoader, List, AutoSizer } from "react-virtualized";
 import { useSelector, useDispatch } from "react-redux";
+import Row from "../Row";
+import SearchComponent from "../Search/SearchComponent";
 import { homeOperations } from "./index";
 
 import "./HomeComponent.css";
@@ -12,7 +13,7 @@ const BATCH_ROW = 50;
 const AMOUNT_OF_VISIBLE_ROWS = 10;
 const ROW_HEIGHT = 50;
 
-const Home: FunctionComponent = () => {
+const HomeComponent: FunctionComponent = () => {
   const page = useRef<number>(-1);
   const users = useSelector((state) => (state as any)?.home.users);
   const isFetching = useSelector((state) => (state as any)?.home.isFetching);
@@ -41,6 +42,7 @@ const Home: FunctionComponent = () => {
 
   return (
     <div>
+      <SearchComponent />
       <div className="LinkToSettings">
         <Link to="/settings">Settings</Link>
       </div>
@@ -72,4 +74,4 @@ const Home: FunctionComponent = () => {
   );
 };
 
-export default Home;
+export default HomeComponent;

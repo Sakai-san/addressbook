@@ -5,7 +5,7 @@ import { settingsOperations } from "./index";
 
 const NATIONALIIES = ["ch", "es", "fr", "gb"];
 
-const Settings: FunctionComponent = () => {
+const SettingsComponent: FunctionComponent = () => {
   const dispatch = useDispatch();
   const nationalitySet = useSelector((state) => (state as any)?.settings);
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) =>
@@ -35,4 +35,4 @@ const Settings: FunctionComponent = () => {
   );
 };
 
-export default Settings;
+export default SettingsComponent;

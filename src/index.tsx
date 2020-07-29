@@ -5,6 +5,7 @@ import { compose, createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import homeReducer from "./Home";
 import settingsReducer from "./Settings";
+import searchReducer from "./Search";
 import App from "./App";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
@@ -13,7 +14,11 @@ import * as serviceWorker from "./serviceWorker";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  combineReducers({ home: homeReducer, settings: settingsReducer }),
+  combineReducers({
+    home: homeReducer,
+    settings: settingsReducer,
+    search: searchReducer,
+  }),
   composeEnhancers(applyMiddleware(thunk))
 );
 
