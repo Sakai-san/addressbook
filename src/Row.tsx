@@ -21,7 +21,6 @@ const Row = ({ user, reactVirtualizedKey, style }: any) => {
     setIsModalVisible(false);
   };
 
-  // component did mount
   useEffect(() => {
     if (rowRef?.current && doPlaceAtBottom(rowRef.current)) {
       modalRef?.current?.classList?.add?.("ModalBotton");
