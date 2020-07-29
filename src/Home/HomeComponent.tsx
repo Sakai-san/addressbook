@@ -5,8 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Row from "../Row";
 import SearchComponent from "../Search/SearchComponent";
 import { homeOperations } from "./index";
-import { ISearchTerms } from "../Search/types";
+import { IHomeStore, IUser } from "./types";
+import { ISearchTerms, ISearchStore } from "../Search/types";
 import { IReduxStore } from "../reduxStoreType";
+import actions from "../Search/actions";
 
 import "./HomeComponent.css";
 import "react-virtualized/styles.css"; // only needs to be imported once
@@ -15,19 +17,32 @@ const BATCH_ROW = 50;
 const AMOUNT_OF_VISIBLE_ROWS = 10;
 const ROW_HEIGHT = 50;
 
-const filterUsers = (users: any, searchTems: ISearchTerms) => {
-  return users.filter((_: any) => _);
+const filterUsers = (users: IUser[], searchTems: ISearchTerms | null) => {
+  return users.filter(
+    (user) =>
+      user?.name?.first?.toUpperCase?.() === searchTems?.first &&
+      user?.name?.last?.toUpperCase?.() === searchTems?.last
+  );
 };
 
 const HomeComponent: FunctionComponent = () => {
   const page = useRef<number>(-1);
-  const users = useSelector((state: IReduxStore) =>
-    state.search.isSearching
-      ? filterUsers(state.search.terms, (state as any)?.home.users)
-      : (state as any)?.home.users
+  const users = useSelector((state: IReduxStore) => {
+    if (state.search.isSearching) {
+      const filtered = filterUsers(
+        (state.home as IHomeStore).users,
+        (state.search as ISearchStore).terms
+      );
+      dispatch(actions.makeSearching(false));
+      return filtered;
+    } else {
+      return (state.home as IHomeStore).users;
+    }
+  });
+  const isFetching = useSelector(
+    (state: IReduxStore) => (state.home as IHomeStore).isFetching
   );
-  const isFetching = useSelector((state) => (state as any)?.home.isFetching);
-  const nationality = useSelector((state) => (state as any)?.settings);
+  const nationality = useSelector((state: IReduxStore) => state?.settings);
 
   const dispatch = useDispatch();
 
