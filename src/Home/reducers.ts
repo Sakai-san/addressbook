@@ -1,8 +1,8 @@
-import { actionTypes } from "./types";
+import { actionTypes, IHomeStore } from "./types";
 import actions from "./actions";
 
 export default (
-  state = {
+  state: IHomeStore = {
     users: [],
     isFetching: false,
   },
