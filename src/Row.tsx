@@ -11,7 +11,7 @@ const distanceFromViewportTop = (element: HTMLElement) =>
 const doPlaceAtBottom = (element: HTMLElement) =>
   getViewportHeight() / 2 < distanceFromViewportTop(element) ? true : false;
 
-const Row = ({ user, reactVirtualizedKey, style }: any) => {
+const Row = ({ user, style }: any) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
@@ -34,16 +34,13 @@ const Row = ({ user, reactVirtualizedKey, style }: any) => {
       ref={rowRef}
       className="Row"
       style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
-      onClick={(e) => {
-        setIsModalVisible(true);
-      }}
+      onClick={(e) => setIsModalVisible(true)}
     >
-      <img src={user.picture.thumbnail} />
-      <span>&nbsp;&nbsp;&nbsp;{reactVirtualizedKey}</span>
-      <span>&nbsp;&nbsp;&nbsp;{user.name.first}</span>
-      <span>&nbsp;&nbsp;&nbsp;{user.name.last}</span>
-      <span>&nbsp;&nbsp;&nbsp;{user.email}</span>
-      <span onClick={clickModalHandler}>&nbsp;&nbsp;&nbsp;{user.nat}</span>
+      <img src={user?.picture?.thumbnail} />
+      <div>&nbsp;&nbsp;&nbsp;{user?.name?.first}</div>
+      <div>&nbsp;&nbsp;&nbsp;{user?.name?.last}</div>
+      <div>&nbsp;&nbsp;&nbsp;{user?.login?.username}</div>
+      <div>&nbsp;&nbsp;&nbsp;{user?.email}</div>
       {isModalVisible && (
         <div ref={modalRef} className="Modal">
           <span className="Close" onClick={clickModalHandler}>
