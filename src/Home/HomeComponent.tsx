@@ -20,20 +20,21 @@ const ROW_HEIGHT = 50;
 const filterUsers = (users: IUser[], searchTems: ISearchTerms | null) => {
   return users.filter(
     (user) =>
-      user?.name?.first?.toUpperCase?.() === searchTems?.first &&
-      user?.name?.last?.toUpperCase?.() === searchTems?.last
+      user?.name?.first?.toUpperCase?.() ===
+        searchTems?.first?.toUpperCase?.() &&
+      user?.name?.last?.toUpperCase?.() === searchTems?.last?.toUpperCase?.()
   );
 };
 
 const HomeComponent: FunctionComponent = () => {
   const page = useRef<number>(-1);
   const users = useSelector((state: IReduxStore) => {
-    if (state.search.isSearching) {
+    if (state.search.terms) {
       const filtered = filterUsers(
         (state.home as IHomeStore).users,
         (state.search as ISearchStore).terms
       );
-      dispatch(actions.makeSearching(false));
+      //      dispatch(actions.makeSearching(false));
       return filtered;
     } else {
       return (state.home as IHomeStore).users;
