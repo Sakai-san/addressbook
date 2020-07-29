@@ -39,8 +39,6 @@ const Home: FunctionComponent = () => {
       user={users[index]}
       reactVirtualizedKey={key}
       style={style}
-      amountOfVisibleRows={AMOUNT_OF_VISIBLE_ROWS}
-      rowHeight={ROW_HEIGHT}
     />
   );
 

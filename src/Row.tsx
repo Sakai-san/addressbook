@@ -2,27 +2,18 @@ import React, { FunctionComponent, useState, useRef, useEffect } from "react";
 
 import "./Row.css";
 
-const isRowInTheFirstTopHalf = (
-  dom: any,
-  amountOfVisibleRows: number,
-  rowHeight: number
-) => {
-  if (dom.offsetTop < (amountOfVisibleRows * rowHeight) / 2) {
-    return true;
-  } else {
-    return false;
-  }
-};
+const getViewportHeight = () =>
+  Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
-const Row = ({
-  user,
-  reactVirtualizedKey,
-  style,
-  amountOfVisibleRows,
-  rowHeight,
-}: any) => {
-  const rowRef = useRef<HTMLElement>(null);
-  const modalRef = useRef<HTMLElement>(null);
+const distanceFromViewportTop = (element: any) =>
+  element.getBoundingClientRect().top;
+
+const doPlaceAtBottom = (dom: any) =>
+  getViewportHeight() / 2 < distanceFromViewportTop(dom) ? true : false;
+
+const Row = ({ user, reactVirtualizedKey, style }: any) => {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const clickModalHandler = (e: any) => {
@@ -32,22 +23,15 @@ const Row = ({
 
   // component did mount
   useEffect(() => {
-    if (
-      rowRef?.current &&
-      isRowInTheFirstTopHalf(rowRef.current, amountOfVisibleRows, rowHeight)
-    ) {
-      console.log(rowRef?.current);
-      // @ts-ignore
-      modalRef?.current?.classList?.add?.("ModalTop");
-    } else {
-      // @ts-ignore
+    if (rowRef?.current && doPlaceAtBottom(rowRef.current)) {
       modalRef?.current?.classList?.add?.("ModalBotton");
+    } else {
+      modalRef?.current?.classList?.add?.("ModalTop");
     }
   });
 
   return (
     <div
-      // @ts-ignore
       ref={rowRef}
       className="Row"
       style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
@@ -62,15 +46,11 @@ const Row = ({
       <span>&nbsp;&nbsp;&nbsp;{user.email}</span>
       <span onClick={clickModalHandler}>&nbsp;&nbsp;&nbsp;{user.nat}</span>
       {isModalVisible && (
-        <div
-          // @ts-ignore
-          ref={modalRef}
-          className="Modal"
-        >
+        <div ref={modalRef} className="Modal">
           <span className="Close" onClick={clickModalHandler}>
             X
           </span>
-          <div className="Modal-content">
+          <div className="ModalContent">
             <div>
               {user.location.street.number}, {user.location.street.name}
             </div>
