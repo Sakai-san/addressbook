@@ -5,6 +5,7 @@ import { InfiniteLoader, List, AutoSizer } from "react-virtualized";
 import { useSelector, useDispatch } from "react-redux";
 import { homeOperations } from "./index";
 
+import "./HomeComponent.css";
 import "react-virtualized/styles.css"; // only needs to be imported once
 
 const BATCH_ROW = 50;
@@ -14,6 +15,7 @@ const ROW_HEIGHT = 50;
 const Home: FunctionComponent = () => {
   const page = useRef<number>(-1);
   const users = useSelector((state) => (state as any)?.home.users);
+  const isFetching = useSelector((state) => (state as any)?.home.isFetching);
   const nationality = useSelector((state) => (state as any)?.settings);
 
   const dispatch = useDispatch();
@@ -34,19 +36,15 @@ const Home: FunctionComponent = () => {
   };
 
   const rowRenderer = ({ key, index, style }: any) => (
-    <Row
-      key={key}
-      user={users[index]}
-      reactVirtualizedKey={key}
-      style={style}
-    />
+    <Row key={key} user={users[index]} style={style} />
   );
 
   return (
     <div>
-      <div className="link-to-settings">
+      <div className="LinkToSettings">
         <Link to="/settings">Settings</Link>
       </div>
+      {isFetching && <div className="Loading">Loading...</div>}
 
       <InfiniteLoader
         isRowLoaded={isRowLoaded}
