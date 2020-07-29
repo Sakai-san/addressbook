@@ -6,7 +6,7 @@ import Settings from "./Settings/SettingsComponent";
 import "./App.css";
 
 const App: FunctionComponent = () => (
-  <div className="wrapper">
+  <div className="Wrapper">
     <Router>
       <Switch>
         <Route path="/settings">
