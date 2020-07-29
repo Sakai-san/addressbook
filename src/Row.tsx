@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useState, useRef, useEffect } from "react";
+import React, {
+  FunctionComponent,
+  MouseEvent,
+  useState,
+  useRef,
+  useEffect,
+} from "react";
 
 import "./Row.css";
 
@@ -16,7 +22,7 @@ const Row = ({ user, style }: any) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
-  const clickModalHandler = (e: any) => {
+  const clickModalHandler = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     setIsModalVisible(false);
   };
@@ -34,7 +40,7 @@ const Row = ({ user, style }: any) => {
       ref={rowRef}
       className="Row"
       style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
-      onClick={(e) => setIsModalVisible(true)}
+      onClick={(e: MouseEvent<HTMLElement>) => setIsModalVisible(true)}
     >
       <img src={user?.picture?.thumbnail} />
       <div>&nbsp;&nbsp;&nbsp;{user?.name?.first}</div>
