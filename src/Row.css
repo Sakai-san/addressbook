@@ -34,8 +34,10 @@
 }
 
 .ModalContent {
-  font-family: verdana;
-  padding: 20px 10px 5px 10px;
+  display: flex;
+  font-family: Courier;
+  padding: 30px 10px 5px 10px;
   display: flex;
   flex-direction: column;
+  font-size: medium;
 }
