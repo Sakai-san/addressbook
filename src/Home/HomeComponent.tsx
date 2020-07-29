@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Row from "../Row";
-import { InfiniteLoader, List } from "react-virtualized";
+import { InfiniteLoader, List, AutoSizer } from "react-virtualized";
 import { useSelector, useDispatch } from "react-redux";
 import { homeOperations } from "./index";
 
@@ -53,15 +53,19 @@ const Home: FunctionComponent = () => {
         rowCount={1000}
       >
         {({ onRowsRendered, registerChild }) => (
-          <List
-            height={50 * 10}
-            onRowsRendered={onRowsRendered}
-            ref={registerChild}
-            rowCount={users.length}
-            rowHeight={50}
-            rowRenderer={rowRenderer}
-            width={1024}
-          />
+          <AutoSizer>
+            {({ height, width }) => (
+              <List
+                width={width}
+                height={50 * 10}
+                onRowsRendered={onRowsRendered}
+                ref={registerChild}
+                rowCount={users.length}
+                rowHeight={50}
+                rowRenderer={rowRenderer}
+              />
+            )}
+          </AutoSizer>
         )}
       </InfiniteLoader>
     </div>
