@@ -5,11 +5,11 @@ import "./Row.css";
 const getViewportHeight = () =>
   Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
-const distanceFromViewportTop = (element: any) =>
+const distanceFromViewportTop = (element: HTMLElement) =>
   element.getBoundingClientRect().top;
 
-const doPlaceAtBottom = (dom: any) =>
-  getViewportHeight() / 2 < distanceFromViewportTop(dom) ? true : false;
+const doPlaceAtBottom = (element: HTMLElement) =>
+  getViewportHeight() / 2 < distanceFromViewportTop(element) ? true : false;
 
 const Row = ({ user, reactVirtualizedKey, style }: any) => {
   const rowRef = useRef<HTMLDivElement>(null);
