@@ -4,7 +4,7 @@
 }
 
 .Row:hover {
-  background-color: #ccc;
+  background-color: rgb(242, 242, 242);
 }
 
 .Close {
@@ -19,9 +19,17 @@
 .Modal {
   cursor: default;
   position: absolute;
-  background-color: rgba(255, 204, 204, 0.6);
+  background-color: rgba(255, 204, 204, 0.8);
   right: 30%;
+  z-index: 1;
+}
+
+.ModalBotton {
   bottom: 0px;
+}
+
+.ModalTop {
+  top: 0px;
 }
 
 .Modal-content {

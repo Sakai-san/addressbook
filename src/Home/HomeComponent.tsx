@@ -7,7 +7,9 @@ import { homeOperations } from "./index";
 
 import "react-virtualized/styles.css"; // only needs to be imported once
 
-const AMOUNT_OF_ROWS = 50;
+const BATCH_ROW = 50;
+const AMOUNT_OF_VISIBLE_ROWS = 10;
+const ROW_HEIGHT = 50;
 
 const Home: FunctionComponent = () => {
   const page = useRef<number>(-1);
@@ -27,7 +29,7 @@ const Home: FunctionComponent = () => {
   const loadMoreRows = ({ startIndex, stopIndex }: any) => {
     page.current = page.current + 1;
     return dispatch(
-      homeOperations.fetchUsers(page.current, nationality, AMOUNT_OF_ROWS)
+      homeOperations.fetchUsers(page.current, nationality, BATCH_ROW)
     );
   };
 
@@ -37,6 +39,8 @@ const Home: FunctionComponent = () => {
       user={users[index]}
       reactVirtualizedKey={key}
       style={style}
+      amountOfVisibleRows={AMOUNT_OF_VISIBLE_ROWS}
+      rowHeight={ROW_HEIGHT}
     />
   );
 
@@ -57,11 +61,11 @@ const Home: FunctionComponent = () => {
             {({ height, width }) => (
               <List
                 width={width}
-                height={50 * 10}
+                height={ROW_HEIGHT * AMOUNT_OF_VISIBLE_ROWS}
                 onRowsRendered={onRowsRendered}
                 ref={registerChild}
                 rowCount={users.length}
-                rowHeight={50}
+                rowHeight={ROW_HEIGHT}
                 rowRenderer={rowRenderer}
               />
             )}
