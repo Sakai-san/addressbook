@@ -1,8 +1,8 @@
-import { actionTypes, ISearchTerms } from "./types";
+import { actionTypes, ISearchTerms, ISearchStore } from "./types";
 import actions from "./actions";
 
 export default (
-  state = {
+  state: ISearchStore = {
     isSearching: false,
     terms: null,
   },

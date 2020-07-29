@@ -8,6 +8,10 @@ export interface ISearchTerms {
   last: string | undefined;
 }
 
+export interface ISearchStore {
+  terms: ISearchTerms | null;
+  isSearching: boolean;
+}
 export interface IAction {
   type: actionTypes;
   payload: boolean | ISearchTerms;

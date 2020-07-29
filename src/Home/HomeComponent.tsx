@@ -6,6 +6,7 @@ import Row from "../Row";
 import SearchComponent from "../Search/SearchComponent";
 import { homeOperations } from "./index";
 import { ISearchTerms } from "../Search/types";
+import { IReduxStore } from "../reduxStoreType";
 
 import "./HomeComponent.css";
 import "react-virtualized/styles.css"; // only needs to be imported once
@@ -15,13 +16,13 @@ const AMOUNT_OF_VISIBLE_ROWS = 10;
 const ROW_HEIGHT = 50;
 
 const filterUsers = (users: any, searchTems: ISearchTerms) => {
-  return users.filter((_) => _);
+  return users.filter((_: any) => _);
 };
 
 const HomeComponent: FunctionComponent = () => {
   const page = useRef<number>(-1);
-  const users = useSelector((state) =>
-    (state as any).search.isSearching
+  const users = useSelector((state: IReduxStore) =>
+    state.search.isSearching
       ? filterUsers(state.search.terms, (state as any)?.home.users)
       : (state as any)?.home.users
   );
