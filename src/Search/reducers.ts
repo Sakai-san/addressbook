@@ -10,10 +10,12 @@ export default (
   if (action.type === actionTypes.SEARCH_SEARCH) {
     return {
       ...state,
-      terms: {
-        first: action.payload.first,
-        last: action.payload.last,
-      },
+      terms: action?.payload
+        ? {
+            first: action.payload.first,
+            last: action.payload.last,
+          }
+        : action.payload,
     };
   } else {
     return state;

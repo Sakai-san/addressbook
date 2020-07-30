@@ -22,12 +22,7 @@ const SearchComponent: FunctionComponent = () => {
   };
 
   const onResetHandler = (e: MouseEvent) => {
-    dispatch(
-      actions.makeSearch({
-        first: "",
-        last: "",
-      })
-    );
+    dispatch(actions.makeSearch(null));
   };
 
   return (
