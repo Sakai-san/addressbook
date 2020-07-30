@@ -29,13 +29,11 @@ const HomeComponent: FunctionComponent = () => {
   const isSearchActive = useSelector(
     (state: IReduxStore) => state.search.terms
   );
-  const users = useSelector((state: IReduxStore) => {
-    if (!isSearchActive) {
-      return state.home.users;
-    } else {
-      return filterUsers(state.home.users, state.search.terms);
-    }
-  });
+  const users = useSelector((state: IReduxStore) =>
+    !isSearchActive
+      ? state.home.users
+      : filterUsers(state.home.users, state.search.terms)
+  );
   const isFetching = useSelector((state: IReduxStore) => state.home.isFetching);
   const nationality = useSelector((state: IReduxStore) => state.settings);
 
