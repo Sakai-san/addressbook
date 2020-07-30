@@ -27,11 +27,9 @@ const filterUsers = (users: IUser[], searchTems: ISearchTerms | null) =>
 const HomeComponent: FunctionComponent = () => {
   const page = useRef<number>(-1);
   const users = useSelector((state: IReduxStore) => {
-    if (!state.search.terms) {
-      return state.home.users;
-    } else if (
-      state?.search?.terms?.first === "" &&
-      state?.search?.terms?.last === ""
+    if (
+      !state.search.terms ||
+      (state?.search?.terms?.first === "" && state?.search?.terms?.last === "")
     ) {
       return state.home.users;
     } else {
