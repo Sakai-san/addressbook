@@ -8,7 +8,6 @@ import { homeOperations } from "./index";
 import { IHomeStore, IUser } from "./types";
 import { ISearchTerms, ISearchStore } from "../Search/types";
 import { IReduxStore } from "../reduxStoreType";
-import actions from "../Search/actions";
 
 import "./HomeComponent.css";
 import "react-virtualized/styles.css"; // only needs to be imported once
@@ -29,15 +28,19 @@ const filterUsers = (users: IUser[], searchTems: ISearchTerms | null) => {
 const HomeComponent: FunctionComponent = () => {
   const page = useRef<number>(-1);
   const users = useSelector((state: IReduxStore) => {
-    if (state.search.terms) {
+    if (!state.search.terms) {
+      return (state.home as IHomeStore).users;
+    } else if (
+      state?.search?.terms?.first === "" &&
+      state?.search?.terms?.last === ""
+    ) {
+      return (state.home as IHomeStore).users;
+    } else {
       const filtered = filterUsers(
         (state.home as IHomeStore).users,
         (state.search as ISearchStore).terms
       );
-      //      dispatch(actions.makeSearching(false));
       return filtered;
-    } else {
-      return (state.home as IHomeStore).users;
     }
   });
   const isFetching = useSelector(
