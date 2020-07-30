@@ -66,7 +66,9 @@ const HomeComponent: FunctionComponent = () => {
 
   return (
     <div>
-      <SearchComponent />
+      <div className="Sticky">
+        <SearchComponent />
+      </div>
       <div className="LinkToSettings">
         <Link to="/settings">Settings</Link>
       </div>

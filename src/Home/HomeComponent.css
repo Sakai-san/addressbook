@@ -1,8 +1,16 @@
-.Loading {
-  text-transform: uppercase;
-  font-size: 40px;
+.Sticky {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 .LinkToSettings {
   margin-bottom: 30px;
+}
+
+.Loading {
+  text-transform: uppercase;
+  font-size: 40px;
 }
