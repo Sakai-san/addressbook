@@ -17,7 +17,7 @@ export default (
     };
   } else if (action.type === actionTypes.FETCH_USERS) {
     return {
-      users: [...state.users, ...(action.payload as any[])],
+      users: [...state.users, ...action.payload],
       isFetching: false,
     };
   } else {
