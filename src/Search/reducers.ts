@@ -1,11 +1,12 @@
+import { Reducer } from "redux";
 import { actionTypes, ISearchStore } from "./types";
 import actions from "./actions";
 
-export default (
-  state: ISearchStore = {
+const reducer: Reducer<ISearchStore, ReturnType<typeof actions.makeSearch>> = (
+  state = {
     terms: null,
   },
-  action: ReturnType<typeof actions.makeSearch>
+  action
 ) => {
   if (action.type === actionTypes.SEARCH_SEARCH) {
     return {
@@ -21,3 +22,5 @@ export default (
     return state;
   }
 };
+
+export default reducer;
