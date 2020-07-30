@@ -3,9 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { compose, createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import homeReducer from "./Home";
-import settingsReducer from "./Settings";
-import searchReducer from "./Search";
+import * as ducks from "./ducks/index";
 import App from "./App";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
@@ -14,11 +12,7 @@ const composeEnhancers =
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  combineReducers({
-    home: homeReducer,
-    settings: settingsReducer,
-    search: searchReducer,
-  }),
+  combineReducers(ducks),
   composeEnhancers(applyMiddleware(thunk))
 );
 

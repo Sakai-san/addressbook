@@ -5,7 +5,7 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import { IUser } from "./Home/types";
+import { IUser } from "./ducks/Home/types";
 
 import "./Row.css";
 

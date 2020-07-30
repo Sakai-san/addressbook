@@ -2,12 +2,12 @@ import React, { FunctionComponent, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { InfiniteLoader, List, AutoSizer } from "react-virtualized";
 import { useSelector, useDispatch } from "react-redux";
-import Row from "../Row";
+import Row from "../../Row";
 import SearchComponent from "../Search/SearchComponent";
 import { homeOperations } from "./index";
 import { IUser } from "./types";
 import { ISearchTerms } from "../Search/types";
-import { IReduxStore } from "../reduxStoreType";
+import { IReduxStore } from "../../reduxStoreType";
 
 import "./HomeComponent.css";
 import "react-virtualized/styles.css"; // only needs to be imported once

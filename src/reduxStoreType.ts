@@ -1,6 +1,6 @@
-import { IHomeStore } from "./Home/types";
-import { ISearchStore } from "./Search/types";
-import { TypeSettingsStore } from "./Settings/types";
+import { IHomeStore } from "./ducks/Home/types";
+import { ISearchStore } from "./ducks/Search/types";
+import { TypeSettingsStore } from "./ducks/Settings/types";
 
 export interface IReduxStore {
   home: IHomeStore;

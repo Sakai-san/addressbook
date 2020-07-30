@@ -2,7 +2,7 @@ import React, { FunctionComponent, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsOperations } from "./index";
-import { IReduxStore } from "../reduxStoreType";
+import { IReduxStore } from "../../reduxStoreType";
 
 const NATIONALIIES = ["ch", "es", "fr", "gb"];
 
