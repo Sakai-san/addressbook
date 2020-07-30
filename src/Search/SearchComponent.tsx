@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, FormEvent } from "react";
+import React, { FunctionComponent, useRef, FormEvent, MouseEvent } from "react";
 import { useDispatch } from "react-redux";
 import actions from "./actions";
 
@@ -21,6 +21,15 @@ const SearchComponent: FunctionComponent = () => {
     );
   };
 
+  const onResetHandler = (e: MouseEvent) => {
+    dispatch(
+      actions.makeSearch({
+        first: "",
+        last: "",
+      })
+    );
+  };
+
   return (
     <form className="SearchComponent" onSubmit={onSubmitHandler}>
       <div>
@@ -29,7 +38,10 @@ const SearchComponent: FunctionComponent = () => {
       <div>
         <input ref={lastNameRef} placeholder="last name" />
       </div>
-      <button>Search</button>
+      <button type="submit">Search</button>
+      <button onClick={onResetHandler} type="reset">
+        Reset
+      </button>
     </form>
   );
 };

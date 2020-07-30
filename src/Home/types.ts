@@ -65,7 +65,12 @@ export interface IHomeStore {
   isFetching: boolean;
 }
 
-export interface IAction {
+export interface IActionFetching {
   type: actionTypes;
-  payload: IUser[] | boolean;
+  payload: boolean;
+}
+
+export interface IActionFetch {
+  type: actionTypes;
+  payload: IUser[];
 }

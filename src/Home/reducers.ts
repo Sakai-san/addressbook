@@ -1,4 +1,4 @@
-import { actionTypes, IHomeStore } from "./types";
+import { actionTypes, IHomeStore, IActionFetch } from "./types";
 import actions from "./actions";
 
 export default (
@@ -10,12 +10,12 @@ export default (
     typeof actions.makeUserFectch | typeof actions.makeUserFectching
   >
 ) => {
-  if (action.type === actionTypes.FETCHING_USERS) {
+  if ((action as IActionFetch).type === actionTypes.FETCHING_USERS) {
     return {
       ...state,
       isFetching: action.payload,
     };
-  } else if (action.type === actionTypes.FETCH_USERS) {
+  } else if ((action as IActionFetch).type === actionTypes.FETCH_USERS) {
     return {
       users: [...state.users, ...action.payload],
       isFetching: false,
