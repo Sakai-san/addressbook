@@ -59,7 +59,7 @@ const Row: FunctionComponent<IRowProps> = ({ user, style }) => {
       {isModalVisible && (
         <div ref={modalRef} className="Modal">
           <span className="Close" onClick={clickModalHandler}>
-            X
+            &#10008;
           </span>
           <div className="ModalContent">
             <div>

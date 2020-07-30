@@ -21,9 +21,7 @@ const SearchComponent: FunctionComponent = () => {
     );
   };
 
-  const onResetHandler = (e: MouseEvent) => {
-    dispatch(actions.makeSearch(null));
-  };
+  const onResetHandler = (e: MouseEvent) => dispatch(actions.makeSearch(null));
 
   return (
     <form className="SearchComponent" onSubmit={onSubmitHandler}>
