@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Row from "../Row";
 import SearchComponent from "../Search/SearchComponent";
 import { homeOperations } from "./index";
-import { IHomeStore, IUser } from "./types";
-import { ISearchTerms, ISearchStore } from "../Search/types";
+import { IUser } from "./types";
+import { ISearchTerms } from "../Search/types";
 import { IReduxStore } from "../reduxStoreType";
 
 import "./HomeComponent.css";
@@ -28,24 +28,19 @@ const HomeComponent: FunctionComponent = () => {
   const page = useRef<number>(-1);
   const users = useSelector((state: IReduxStore) => {
     if (!state.search.terms) {
-      return (state.home as IHomeStore).users;
+      return state.home.users;
     } else if (
       state?.search?.terms?.first === "" &&
       state?.search?.terms?.last === ""
     ) {
-      return (state.home as IHomeStore).users;
+      return state.home.users;
     } else {
-      const filtered = filterUsers(
-        (state.home as IHomeStore).users,
-        (state.search as ISearchStore).terms
-      );
+      const filtered = filterUsers(state.home.users, state.search.terms);
       return filtered;
     }
   });
-  const isFetching = useSelector(
-    (state: IReduxStore) => (state.home as IHomeStore).isFetching
-  );
-  const nationality = useSelector((state: IReduxStore) => state?.settings);
+  const isFetching = useSelector((state: IReduxStore) => state.home.isFetching);
+  const nationality = useSelector((state: IReduxStore) => state.settings);
 
   const dispatch = useDispatch();
 
