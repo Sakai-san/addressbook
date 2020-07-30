@@ -16,14 +16,13 @@ const BATCH_ROW = 50;
 const AMOUNT_OF_VISIBLE_ROWS = 10;
 const ROW_HEIGHT = 50;
 
-const filterUsers = (users: IUser[], searchTems: ISearchTerms | null) => {
-  return users.filter(
+const filterUsers = (users: IUser[], searchTems: ISearchTerms | null) =>
+  users.filter(
     (user) =>
       user?.name?.first?.toUpperCase?.() ===
         searchTems?.first?.toUpperCase?.() &&
       user?.name?.last?.toUpperCase?.() === searchTems?.last?.toUpperCase?.()
   );
-};
 
 const HomeComponent: FunctionComponent = () => {
   const page = useRef<number>(-1);
