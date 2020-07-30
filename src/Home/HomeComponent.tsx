@@ -50,7 +50,9 @@ const HomeComponent: FunctionComponent = () => {
 
   const loadMoreRows = ({ startIndex, stopIndex }: any) => {
     page.current = page.current + 1;
-    dispatch(homeOperations.fetchUsers(page.current, nationality, BATCH_ROW));
+    return Promise.resolve(
+      dispatch(homeOperations.fetchUsers(page.current, nationality, BATCH_ROW))
+    );
   };
 
   const rowRenderer = ({ key, index, style }: any) => (
@@ -77,7 +79,6 @@ const HomeComponent: FunctionComponent = () => {
 
       <InfiniteLoader
         isRowLoaded={isRowLoaded}
-        // @ts-ignore
         loadMoreRows={loadMoreRows}
         rowCount={1000}
       >
