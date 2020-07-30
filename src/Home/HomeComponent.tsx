@@ -26,15 +26,14 @@ const filterUsers = (users: IUser[], searchTems: ISearchTerms | null) =>
 
 const HomeComponent: FunctionComponent = () => {
   const page = useRef<number>(-1);
+  const isSearchActive = useSelector(
+    (state: IReduxStore) => state.search.terms
+  );
   const users = useSelector((state: IReduxStore) => {
-    if (
-      !state.search.terms ||
-      (state?.search?.terms?.first === "" && state?.search?.terms?.last === "")
-    ) {
+    if (!isSearchActive) {
       return state.home.users;
     } else {
-      const filtered = filterUsers(state.home.users, state.search.terms);
-      return filtered;
+      return filterUsers(state.home.users, state.search.terms);
     }
   });
   const isFetching = useSelector((state: IReduxStore) => state.home.isFetching);
@@ -65,7 +64,15 @@ const HomeComponent: FunctionComponent = () => {
       <div className="LinkToSettings">
         <Link to="/settings">Settings</Link>
       </div>
-      {isFetching && <div className="Loading">Loading...</div>}
+
+      {isSearchActive && (
+        <div className="Loading">
+          No further data are loaded when search is in use
+        </div>
+      )}
+      {!isSearchActive && isFetching && (
+        <div className="Loading">Loading...</div>
+      )}
 
       <InfiniteLoader
         isRowLoaded={isRowLoaded}
