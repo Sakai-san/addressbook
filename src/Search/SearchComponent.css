@@ -1,3 +1,7 @@
 .SearchComponent {
   display: flex;
 }
+
+.SearchComponent > * {
+  margin-left: 10px;
+}
