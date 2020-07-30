@@ -1,21 +1,23 @@
-import { actionTypes, IHomeStore, IActionFetch } from "./types";
+import { Reducer } from "redux";
+import { actionTypes, IHomeStore } from "./types";
 import actions from "./actions";
 
-export default (
-  state: IHomeStore = {
+const reducer: Reducer<
+  IHomeStore,
+  ReturnType<typeof actions.makeUserFectch | typeof actions.makeUserFectching>
+> = (
+  state = {
     users: [],
     isFetching: false,
   },
-  action: ReturnType<
-    typeof actions.makeUserFectch | typeof actions.makeUserFectching
-  >
+  action
 ) => {
-  if ((action as IActionFetch).type === actionTypes.FETCHING_USERS) {
+  if (action.type === actionTypes.FETCHING_USERS) {
     return {
       ...state,
       isFetching: action.payload,
     };
-  } else if ((action as IActionFetch).type === actionTypes.FETCH_USERS) {
+  } else if (action.type === actionTypes.FETCH_USERS) {
     return {
       users: [...state.users, ...action.payload],
       isFetching: false,
@@ -24,3 +26,5 @@ export default (
     return state;
   }
 };
+
+export default reducer;
