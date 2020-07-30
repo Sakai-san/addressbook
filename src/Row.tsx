@@ -42,7 +42,10 @@ const Row = ({ user, style }: any) => {
       style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
       onClick={(e: MouseEvent<HTMLElement>) => setIsModalVisible(true)}
     >
-      <img src={user?.picture?.thumbnail} />
+      <img
+        src={user?.picture?.thumbnail}
+        alt={`${user?.name?.first} ${user?.name?.last}`}
+      />
       <div>&nbsp;&nbsp;&nbsp;{user?.name?.first}</div>
       <div>&nbsp;&nbsp;&nbsp;{user?.name?.last}</div>
       <div>&nbsp;&nbsp;&nbsp;{user?.login?.username}</div>
