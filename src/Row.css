@@ -1,6 +1,10 @@
 .Row {
+  display: flex;
   position: relative;
   cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
 .Row:hover {

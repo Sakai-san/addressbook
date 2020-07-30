@@ -45,20 +45,15 @@ const Row: FunctionComponent<IRowProps> = ({ user, style }) => {
   });
 
   return (
-    <div
-      ref={rowRef}
-      className="Row"
-      style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
-      onClick={clickRowlHandler}
-    >
+    <div ref={rowRef} className="Row" style={style} onClick={clickRowlHandler}>
       <img
         src={user?.picture?.thumbnail}
         alt={`${user?.name?.first} ${user?.name?.last}`}
       />
-      <div>&nbsp;&nbsp;&nbsp;{user?.name?.first}</div>
-      <div>&nbsp;&nbsp;&nbsp;{user?.name?.last}</div>
-      <div>&nbsp;&nbsp;&nbsp;{user?.login?.username}</div>
-      <div>&nbsp;&nbsp;&nbsp;{user?.email}</div>
+      <div>{user?.name?.first}</div>
+      <div>{user?.name?.last}</div>
+      <div>{user?.login?.username}</div>
+      <div>{user?.email}</div>
       {isModalVisible && (
         <div ref={modalRef} className="Modal">
           <span className="Close" onClick={clickModalHandler}>
