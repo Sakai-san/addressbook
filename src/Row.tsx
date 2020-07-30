@@ -28,6 +28,9 @@ const Row: FunctionComponent<IRowProps> = ({ user, style }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
+  const clickRowlHandler = (e: MouseEvent<HTMLElement>) =>
+    setIsModalVisible(true);
+
   const clickModalHandler = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     setIsModalVisible(false);
@@ -46,7 +49,7 @@ const Row: FunctionComponent<IRowProps> = ({ user, style }) => {
       ref={rowRef}
       className="Row"
       style={{ ...style, ...{ display: "flex", alignItems: "center" } }}
-      onClick={(e: MouseEvent<HTMLElement>) => setIsModalVisible(true)}
+      onClick={clickRowlHandler}
     >
       <img
         src={user?.picture?.thumbnail}
