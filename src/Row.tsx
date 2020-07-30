@@ -5,8 +5,14 @@ import React, {
   useRef,
   useEffect,
 } from "react";
+import { IUser } from "./Home/types";
 
 import "./Row.css";
+
+interface IRowProps {
+  user: IUser;
+  style: object;
+}
 
 const getViewportHeight = () =>
   Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -17,7 +23,7 @@ const distanceFromViewportTop = (element: HTMLElement) =>
 const doPlaceAtBottom = (element: HTMLElement) =>
   getViewportHeight() / 2 < distanceFromViewportTop(element) ? true : false;
 
-const Row = ({ user, style }: any) => {
+const Row: FunctionComponent<IRowProps> = ({ user, style }) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
@@ -57,14 +63,14 @@ const Row = ({ user, style }: any) => {
           </span>
           <div className="ModalContent">
             <div>
-              {user.location.street.number}, {user.location.street.name}
+              {user?.location?.street?.number}, {user?.location?.street?.name}
             </div>
             <div>
-              {user.location.postcode}, {user.location.city}
+              {user?.location?.postcode}, {user?.location?.city}
             </div>
-            <div>{user.location.state}</div>
-            <div>{user.phone}</div>
-            <div>{user.cell}</div>
+            <div>{user?.location?.state}</div>
+            <div>{user?.phone}</div>
+            <div>{user?.cell}</div>
           </div>
         </div>
       )}
