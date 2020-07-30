@@ -13,7 +13,6 @@ const SearchComponent: FunctionComponent = () => {
   const onSubmitHandler = (e: FormEvent) => {
     e.preventDefault();
 
-    dispatch(actions.makeSearching(true));
     dispatch(
       actions.makeSearch({
         first: firstNameRef?.current?.value,

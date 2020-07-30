@@ -5,12 +5,6 @@ const makeSearch = (search: ISearchTerms) => ({
   payload: search,
 });
 
-const makeSearching = (isSearching: boolean) => ({
-  type: actionTypes.SEARCH_SEARCHING,
-  payload: isSearching,
-});
-
 export default {
   makeSearch,
-  makeSearching,
 };
