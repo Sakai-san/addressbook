@@ -70,11 +70,11 @@ const HomeComponent: FunctionComponent = () => {
 
       {isSearchActive && (
         <div className="LoadingSuspended">
-          No further data are loaded while the search is in use
+          Infinite loader is disabled while the search is in use &#129302;
         </div>
       )}
       {!isSearchActive && isFetching && (
-        <div className="Loading">Loading...</div>
+        <div className="Loading">Loading... &#9203;</div>
       )}
 
       <InfiniteLoader
