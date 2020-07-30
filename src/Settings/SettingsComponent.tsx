@@ -2,12 +2,13 @@ import React, { FunctionComponent, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsOperations } from "./index";
+import { IReduxStore } from "../reduxStoreType";
 
 const NATIONALIIES = ["ch", "es", "fr", "gb"];
 
 const SettingsComponent: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const nationalitySet = useSelector((state) => (state as any)?.settings);
+  const nationalitySet = useSelector((state: IReduxStore) => state.settings);
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) =>
     dispatch(settingsOperations.setNationality(e.target.value));
 
