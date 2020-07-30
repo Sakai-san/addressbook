@@ -69,8 +69,8 @@ const HomeComponent: FunctionComponent = () => {
       </div>
 
       {isSearchActive && (
-        <div className="Loading">
-          No further data are loaded when search is in use
+        <div className="LoadingSuspended">
+          No further data are loaded while the search is in use
         </div>
       )}
       {!isSearchActive && isFetching && (
