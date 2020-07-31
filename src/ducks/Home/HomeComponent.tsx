@@ -81,8 +81,8 @@ const HomeComponent: FunctionComponent = () => {
         rowCount={1000}
       >
         {({ onRowsRendered, registerChild }) => (
-          <AutoSizer>
-            {({ height, width }) => (
+          <AutoSizer disableHeight>
+            {({ width }) => (
               <List
                 width={width}
                 height={ROW_HEIGHT * AMOUNT_OF_VISIBLE_ROWS}
