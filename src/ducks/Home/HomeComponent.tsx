@@ -16,13 +16,20 @@ const BATCH_ROW = 50;
 const AMOUNT_OF_VISIBLE_ROWS = 10;
 const ROW_HEIGHT = 50;
 
-const filterByName = (users: IUser[], searchTems: ISearchTerms | null) =>
-  users.filter(
+const filterByName = (users: IUser[], searchTems: ISearchTerms | null) => {
+  const filtered = users.filter(
     (user) =>
       user?.name?.first?.toUpperCase?.() ===
         searchTems?.first?.toUpperCase?.() &&
       user?.name?.last?.toUpperCase?.() === searchTems?.last?.toUpperCase?.()
   );
+  if (filtered.length > 0) {
+    // wWrkaround. Add two empty rows for the modal not to be croped
+    return filtered.concat([{}, {}]);
+  } else {
+    return filtered;
+  }
+};
 
 const HomeComponent: FunctionComponent = () => {
   const page = useRef<number>(-1);

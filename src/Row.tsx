@@ -46,10 +46,12 @@ const Row: FunctionComponent<IRowProps> = ({ user, style }) => {
 
   return (
     <div ref={rowRef} className="Row" style={style} onClick={clickRowlHandler}>
-      <img
-        src={user?.picture?.thumbnail}
-        alt={`${user?.name?.first} ${user?.name?.last}`}
-      />
+      {user?.picture?.thumbnail && (
+        <img
+          src={user.picture.thumbnail}
+          alt={`${user?.name?.first || ""} ${user?.name?.last || ""}`}
+        />
+      )}
       <div>{user?.name?.first}</div>
       <div>{user?.name?.last}</div>
       <div>{user?.login?.username}</div>
