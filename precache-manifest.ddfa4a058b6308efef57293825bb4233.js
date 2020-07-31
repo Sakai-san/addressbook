@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "25f8d14755149179fe648949eafd93d6",
+    "revision": "c526e31e17a60bde45bbf2ab28bef6d6",
     "url": "/addressbook/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/addressbook/static/css/2.71916e70.chunk.css"
   },
   {
-    "revision": "c045ddbfecb9d00831e0",
-    "url": "/addressbook/static/css/main.3352f569.chunk.css"
+    "revision": "b23c3102449375ad2659",
+    "url": "/addressbook/static/css/main.cf7a9322.chunk.css"
   },
   {
     "revision": "e90475da320ca7370993",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/addressbook/static/js/2.f77bdf8f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c045ddbfecb9d00831e0",
-    "url": "/addressbook/static/js/main.226e64a0.chunk.js"
+    "revision": "b23c3102449375ad2659",
+    "url": "/addressbook/static/js/main.fbde3d2f.chunk.js"
   },
   {
     "revision": "36cac8a0a626b5b1de2a",
