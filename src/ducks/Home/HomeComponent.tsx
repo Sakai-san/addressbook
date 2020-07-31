@@ -16,7 +16,7 @@ const BATCH_ROW = 50;
 const AMOUNT_OF_VISIBLE_ROWS = 10;
 const ROW_HEIGHT = 50;
 
-const filterUsers = (users: IUser[], searchTems: ISearchTerms | null) =>
+const filterByName = (users: IUser[], searchTems: ISearchTerms | null) =>
   users.filter(
     (user) =>
       user?.name?.first?.toUpperCase?.() ===
@@ -32,7 +32,7 @@ const HomeComponent: FunctionComponent = () => {
   const users = useSelector((state: IReduxStore) =>
     !isSearchActive
       ? state.home.users
-      : filterUsers(state.home.users, state.search.terms)
+      : filterByName(state.home.users, state.search.terms)
   );
   const isFetching = useSelector((state: IReduxStore) => state.home.isFetching);
   const nationality = useSelector((state: IReduxStore) => state.settings);
