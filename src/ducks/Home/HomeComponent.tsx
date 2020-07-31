@@ -24,7 +24,7 @@ const filterByName = (users: IUser[], searchTems: ISearchTerms | null) => {
       user?.name?.last?.toUpperCase?.() === searchTems?.last?.toUpperCase?.()
   );
   if (filtered.length > 0) {
-    // wWrkaround. Add two empty rows for the modal not to be croped
+    // workaround. Add two empty rows for the modal not to be cropped
     return filtered.concat([{}, {}]);
   } else {
     return filtered;
