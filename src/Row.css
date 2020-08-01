@@ -6,6 +6,28 @@
   flex-wrap: wrap;
 }
 
+/* up to 480px*/
+@media screen and (max-width: 480px) {
+  .Row {
+    font-size: 12px;
+  }
+}
+
+/* up to 480px*/
+@media screen and (max-width: 480px) {
+  .Column_10 {
+    flex: 1;
+  }
+
+  .Column_20 {
+    flex: 9;
+  }
+
+  .Column_30 {
+    flex: 9;
+  }
+}
+
 /* from 800px */
 @media screen and (min-width: 800px) {
   .Row {
