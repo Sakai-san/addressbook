@@ -3,12 +3,24 @@
   position: relative;
   cursor: pointer;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: nowrap;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .Row:hover {
   background-color: rgb(242, 242, 242);
+}
+
+.Column_10 {
+  flex: 1;
+}
+
+.Column_20 {
+  flex: 2;
+}
+
+.Column_30 {
+  flex: 3;
 }
 
 .Close {
