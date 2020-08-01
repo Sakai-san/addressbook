@@ -2,25 +2,50 @@
   display: flex;
   position: relative;
   cursor: pointer;
-  align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+}
+
+/* from 800px */
+@media screen and (min-width: 800px) {
+  .Row {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .Row:hover {
   background-color: rgb(242, 242, 242);
 }
 
-.Column_10 {
-  flex: 1;
+/* from 480px t0 799px */
+@media screen and (min-width: 480px) and (max-width: 799px) {
+  .Column_10 {
+    flex: 1;
+  }
+
+  .Column_20 {
+    flex: 2;
+  }
+
+  .Column_30 {
+    flex: 3;
+  }
 }
 
-.Column_20 {
-  flex: 2;
-}
+/* from 800px */
+@media screen and (min-width: 800px) {
+  .Column_10 {
+    flex: 1;
+  }
 
-.Column_30 {
-  flex: 3;
+  .Column_20 {
+    flex: 2;
+  }
+
+  .Column_30 {
+    flex: 3;
+  }
 }
 
 .Close {
