@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  MouseEvent,
-  useState,
-  useRef,
-  useEffect,
-} from "react";
+import React, { FunctionComponent, useState } from "react";
 import { usePopper } from "react-popper";
 import { useHover } from "use-events";
 import { IUser } from "./ducks/Home/types";
