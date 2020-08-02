@@ -5,6 +5,8 @@ import React, {
   useRef,
   useEffect,
 } from "react";
+import { usePopper } from "react-popper";
+import { useHover } from "use-events";
 import { IUser } from "./ducks/Home/types";
 
 import "./Row.css";
@@ -14,56 +16,46 @@ interface IRowProps {
   style: object;
 }
 
-const getViewportHeight = () =>
-  Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-
-const distanceFromViewportTop = (element: HTMLElement) =>
-  element.getBoundingClientRect().top;
-
-const doPlaceAtBottom = (element: HTMLElement) =>
-  getViewportHeight() / 2 < distanceFromViewportTop(element) ? true : false;
-
 const Row: FunctionComponent<IRowProps> = ({ user, style }) => {
-  const rowRef = useRef<HTMLDivElement>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [active, bind] = useHover();
+  const [
+    referenceElement,
+    setReferenceElement,
+  ] = useState<HTMLDivElement | null>(null);
+  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
+    null
+  );
+  const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null);
 
-  const clickRowlHandler = (e: MouseEvent<HTMLElement>) =>
-    setIsModalVisible(true);
-
-  const clickModalHandler = (e: MouseEvent<HTMLElement>) => {
-    e.stopPropagation();
-    setIsModalVisible(false);
-  };
-
-  useEffect(() => {
-    if (rowRef?.current && doPlaceAtBottom(rowRef.current)) {
-      modalRef?.current?.classList?.add?.("ModalBotton");
-    } else {
-      modalRef?.current?.classList?.add?.("ModalTop");
-    }
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    modifiers: [{ name: "arrow", options: { element: arrowElement } }],
   });
 
   return (
-    <div ref={rowRef} className="Row" style={style} onClick={clickRowlHandler}>
-      <div className="Column_10">
-        {user?.picture?.thumbnail && (
-          <img
-            src={user.picture.thumbnail}
-            alt={`${user?.name?.first || ""} ${user?.name?.last || ""}`}
-          />
-        )}
+    <>
+      <div className="Row" ref={setReferenceElement} style={style} {...bind}>
+        <div className="Column_10">
+          {user?.picture?.thumbnail && (
+            <img
+              src={user.picture.thumbnail}
+              alt={`${user?.name?.first || ""} ${user?.name?.last || ""}`}
+            />
+          )}
+        </div>
+        <div className="Column_20">{user?.name?.first}</div>
+        <div className="Column_20">{user?.name?.last}</div>
+        <div className="Column_20">{user?.login?.username}</div>
+        <div className="Column_30">{user?.email}</div>
       </div>
-      <div className="Column_20">{user?.name?.first}</div>
-      <div className="Column_20">{user?.name?.last}</div>
-      <div className="Column_20">{user?.login?.username}</div>
-      <div className="Column_30">{user?.email}</div>
-      {isModalVisible && (
-        <div ref={modalRef} className="Modal">
-          <span className="Close" onClick={clickModalHandler}>
-            &#10008;
-          </span>
-          <div className="ModalContent">
+
+      {active && (
+        <div
+          className="Popper"
+          ref={setPopperElement}
+          style={styles.popper}
+          {...attributes.popper}
+        >
+          <div>
             <div>
               {user?.location?.street?.number}, {user?.location?.street?.name}
             </div>
@@ -74,9 +66,10 @@ const Row: FunctionComponent<IRowProps> = ({ user, style }) => {
             <div>{user?.phone}</div>
             <div>{user?.cell}</div>
           </div>
+          <div ref={setArrowElement} style={styles.arrow} />
         </div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -25,7 +25,7 @@ const filterByName = (users: IUser[], searchTems: ISearchTerms | null) => {
   );
   if (filtered.length > 0) {
     // workaround. Add two empty rows for the modal not to be cropped
-    return filtered.concat([{}, {}]);
+    return filtered.concat([{}, {}, {}]);
   } else {
     return filtered;
   }

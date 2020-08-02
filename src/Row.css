@@ -79,28 +79,30 @@
   cursor: pointer;
 }
 
-.Modal {
-  cursor: default;
-  position: absolute;
-  background-color: rgba(231, 166, 26, 0.6);
-  left: 5%;
-  z-index: 1;
-  box-shadow: 6px 6px 43px 0px rgba(0, 0, 0, 0.75);
-}
-
-.ModalBotton {
-  bottom: 0px;
-}
-
-.ModalTop {
-  top: 0px;
-}
-
-.ModalContent {
-  display: flex;
-  font-family: Courier;
-  padding: 30px 10px 5px 10px;
-  display: flex;
-  flex-direction: column;
-  font-size: medium;
+.Popper {
+  transform: translate3d(5px, 2132px, 0px);
+  background-color: darkgoldenrod;
+  z-index: 1000;
+  padding: 10px;
+  z-index: 1060;
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  white-space: normal;
+  line-break: auto;
+  font-size: 0.875rem;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
 }
