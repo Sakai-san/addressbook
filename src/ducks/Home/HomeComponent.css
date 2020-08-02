@@ -10,12 +10,7 @@
   margin-bottom: 30px;
 }
 
-.Loading {
-  text-transform: uppercase;
-  font-size: 40px;
-}
-
-.LoadingSuspended {
+.Message {
   color: #004085;
   background-color: #cce5ff;
   border-color: #b8daff;
@@ -24,4 +19,10 @@
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+}
+
+.Loading {
+  text-transform: uppercase;
+  font-size: 40px;
+  z-index: 10;
 }

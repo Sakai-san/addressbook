@@ -74,12 +74,9 @@ const HomeComponent: FunctionComponent = () => {
       </div>
 
       {isSearchActive && (
-        <div className="LoadingSuspended">
+        <div className="Message">
           Infinite loader is disabled while the search is in use &#129302;.
         </div>
-      )}
-      {!isSearchActive && isFetching && (
-        <div className="Loading">Loading... &#9203;</div>
       )}
 
       <InfiniteLoader
@@ -103,6 +100,10 @@ const HomeComponent: FunctionComponent = () => {
           </AutoSizer>
         )}
       </InfiniteLoader>
+
+      {!isSearchActive && isFetching && (
+        <div className="Message Loading">Loading... &#9203;</div>
+      )}
     </div>
   );
 };
