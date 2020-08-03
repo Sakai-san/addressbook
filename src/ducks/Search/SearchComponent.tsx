@@ -64,7 +64,7 @@ const SearchComponent: FunctionComponent = () => {
         Submit
       </Button>
       <Button
-        size="large"
+        size="medium"
         variant="contained"
         className={classes.margin}
         onClick={onResetHandler}
