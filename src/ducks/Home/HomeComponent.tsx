@@ -14,6 +14,7 @@ import "react-virtualized/styles.css"; // only needs to be imported once
 
 const BATCH_ROW = 50;
 const AMOUNT_OF_VISIBLE_ROWS = 10;
+const AMOUNT_OF_MAX_ROWS = 1000;
 const ROW_HEIGHT = 50;
 
 const filterByName = (users: IUser[], searchTems: ISearchTerms | null) => {
@@ -82,7 +83,7 @@ const HomeComponent: FunctionComponent = () => {
       <InfiniteLoader
         isRowLoaded={isRowLoaded}
         loadMoreRows={loadMoreRows}
-        rowCount={1000}
+        rowCount={AMOUNT_OF_MAX_ROWS}
       >
         {({ onRowsRendered, registerChild }) => (
           <AutoSizer disableHeight>
