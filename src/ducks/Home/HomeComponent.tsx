@@ -7,7 +7,7 @@ import SearchComponent from "../Search/SearchComponent";
 import { homeOperations } from "./index";
 import { IUser } from "./types";
 import { ISearchTerms } from "../Search/types";
-import { IReduxStore } from "../../reduxStoreType";
+import { IReduxStore } from "../reduxStoreType";
 
 import "./HomeComponent.css";
 import "react-virtualized/styles.css"; // only needs to be imported once
