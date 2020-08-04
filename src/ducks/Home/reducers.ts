@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { actionTypes, IHomeStore } from "./types";
+import { IHomeStore, isFetchingAction, isFetchAction } from "./types";
 import actions from "./actions";
 
 const reducer: Reducer<
@@ -12,12 +12,12 @@ const reducer: Reducer<
   },
   action
 ) => {
-  if (action.type === actionTypes.FETCHING_USERS) {
+  if (isFetchingAction(action)) {
     return {
       ...state,
       isFetching: action.payload,
     };
-  } else if (action.type === actionTypes.FETCH_USERS) {
+  } else if (isFetchAction(action)) {
     return {
       users: [...state.users, ...action.payload],
       isFetching: false,

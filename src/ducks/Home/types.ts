@@ -65,12 +65,21 @@ export interface IHomeStore {
   isFetching: boolean;
 }
 
-export interface IActionFetching {
+interface IAction {
   type: actionTypes;
+}
+
+interface IActionFetching extends IAction {
   payload: boolean;
 }
 
-export interface IActionFetch {
-  type: actionTypes;
+interface IActionFetch extends IAction {
   payload: IUser[];
 }
+
+// TYPE GUARDS
+export const isFetchingAction = (action: IAction): action is IActionFetching =>
+  action.type === actionTypes.FETCHING_USERS;
+
+export const isFetchAction = (action: IAction): action is IActionFetch =>
+  action.type === actionTypes.FETCH_USERS;
