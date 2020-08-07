@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/addressbook/static/css/main.88227cf7.chunk.css",
-    "main.js": "/addressbook/static/js/main.fa7942a1.chunk.js",
-    "main.js.map": "/addressbook/static/js/main.fa7942a1.chunk.js.map",
+    "main.js": "/addressbook/static/js/main.794d2ff6.chunk.js",
+    "main.js.map": "/addressbook/static/js/main.794d2ff6.chunk.js.map",
     "runtime-main.js": "/addressbook/static/js/runtime-main.cf31af1a.js",
     "runtime-main.js.map": "/addressbook/static/js/runtime-main.cf31af1a.js.map",
     "static/css/2.71916e70.chunk.css": "/addressbook/static/css/2.71916e70.chunk.css",
     "static/js/2.f2b0c4d9.chunk.js": "/addressbook/static/js/2.f2b0c4d9.chunk.js",
     "static/js/2.f2b0c4d9.chunk.js.map": "/addressbook/static/js/2.f2b0c4d9.chunk.js.map",
     "index.html": "/addressbook/index.html",
-    "precache-manifest.5fc5b8524071edb84deb9cff815745e3.js": "/addressbook/precache-manifest.5fc5b8524071edb84deb9cff815745e3.js",
+    "precache-manifest.4cedbb44ae9711ef0a30ad3f26bd6ffd.js": "/addressbook/precache-manifest.4cedbb44ae9711ef0a30ad3f26bd6ffd.js",
     "service-worker.js": "/addressbook/service-worker.js",
     "static/css/2.71916e70.chunk.css.map": "/addressbook/static/css/2.71916e70.chunk.css.map",
     "static/css/main.88227cf7.chunk.css.map": "/addressbook/static/css/main.88227cf7.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.71916e70.chunk.css",
     "static/js/2.f2b0c4d9.chunk.js",
     "static/css/main.88227cf7.chunk.css",
-    "static/js/main.fa7942a1.chunk.js"
+    "static/js/main.794d2ff6.chunk.js"
   ]
 }
