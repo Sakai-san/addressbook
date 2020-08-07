@@ -2,7 +2,7 @@ import { actionTypes } from "./types";
 
 const makeUserFectch = (data: any) => ({
   type: actionTypes.FETCH_USERS,
-  payload: data,
+  payload: data || [],
 });
 
 const makeUserFectching = (isLoading: boolean) => ({
