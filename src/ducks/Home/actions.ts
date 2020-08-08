@@ -1,8 +1,8 @@
-import { actionTypes } from "./types";
+import { actionTypes, IUser } from "./types";
 
-const makeUserFectch = (data: any) => ({
+const makeUserFectch = (users: IUser) => ({
   type: actionTypes.FETCH_USERS,
-  payload: data || [],
+  payload: users,
 });
 
 const makeUserFectching = (isLoading: boolean) => ({
