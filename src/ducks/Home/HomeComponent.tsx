@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { InfiniteLoader, List, AutoSizer } from "react-virtualized";
 import { useSelector, useDispatch } from "react-redux";
 import Row from "../../Row";
-import SearchComponent from "../Search/SearchComponent";
+import { Search } from "../Search/";
 import { homeOperations } from "./index";
 import { IUser } from "./types";
 import { ISearchTerms } from "../Search/types";
@@ -68,7 +68,7 @@ const HomeComponent: FunctionComponent = () => {
   return (
     <div>
       <div className="Sticky">
-        <SearchComponent />
+        <Search />
       </div>
       <div className="LinkToSettings">
         <Link to="/settings">Settings</Link>

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, FormEvent, MouseEvent } from "react";
+import React, { FunctionComponent, useRef, FormEvent } from "react";
 import { useDispatch } from "react-redux";
 import actions from "./actions";
 import { makeStyles } from "@material-ui/core/styles";
@@ -30,8 +30,7 @@ const SearchComponent: FunctionComponent = () => {
     );
   };
 
-  const onResetHandler = (e: any | MouseEvent<HTMLElement>) =>
-    dispatch(actions.makeSearch(null));
+  const onResetHandler = () => dispatch(actions.makeSearch(null));
 
   const classes = useStyles();
 
