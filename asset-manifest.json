@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/addressbook/static/css/main.88227cf7.chunk.css",
-    "main.js": "/addressbook/static/js/main.cc2178fc.chunk.js",
-    "main.js.map": "/addressbook/static/js/main.cc2178fc.chunk.js.map",
+    "main.css": "/addressbook/static/css/main.74af1cf6.chunk.css",
+    "main.js": "/addressbook/static/js/main.7322101a.chunk.js",
+    "main.js.map": "/addressbook/static/js/main.7322101a.chunk.js.map",
     "runtime-main.js": "/addressbook/static/js/runtime-main.cf31af1a.js",
     "runtime-main.js.map": "/addressbook/static/js/runtime-main.cf31af1a.js.map",
     "static/css/2.71916e70.chunk.css": "/addressbook/static/css/2.71916e70.chunk.css",
     "static/js/2.f2b0c4d9.chunk.js": "/addressbook/static/js/2.f2b0c4d9.chunk.js",
     "static/js/2.f2b0c4d9.chunk.js.map": "/addressbook/static/js/2.f2b0c4d9.chunk.js.map",
     "index.html": "/addressbook/index.html",
-    "precache-manifest.2fa799842be57d22b40c741f9372b685.js": "/addressbook/precache-manifest.2fa799842be57d22b40c741f9372b685.js",
+    "precache-manifest.d6678e0dee4a60a661f4407140f4ff00.js": "/addressbook/precache-manifest.d6678e0dee4a60a661f4407140f4ff00.js",
     "service-worker.js": "/addressbook/service-worker.js",
     "static/css/2.71916e70.chunk.css.map": "/addressbook/static/css/2.71916e70.chunk.css.map",
-    "static/css/main.88227cf7.chunk.css.map": "/addressbook/static/css/main.88227cf7.chunk.css.map",
+    "static/css/main.74af1cf6.chunk.css.map": "/addressbook/static/css/main.74af1cf6.chunk.css.map",
     "static/js/2.f2b0c4d9.chunk.js.LICENSE.txt": "/addressbook/static/js/2.f2b0c4d9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.cf31af1a.js",
     "static/css/2.71916e70.chunk.css",
     "static/js/2.f2b0c4d9.chunk.js",
-    "static/css/main.88227cf7.chunk.css",
-    "static/js/main.cc2178fc.chunk.js"
+    "static/css/main.74af1cf6.chunk.css",
+    "static/js/main.7322101a.chunk.js"
   ]
 }
