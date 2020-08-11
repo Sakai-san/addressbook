@@ -19,7 +19,7 @@ const SearchComponent: FunctionComponent = () => {
 
   const dispatch = useDispatch();
 
-  const onSubmitHandler = (e: FormEvent) => {
+  const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     dispatch(
