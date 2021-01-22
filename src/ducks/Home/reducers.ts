@@ -4,7 +4,7 @@ import actions from "./actions";
 
 const reducer: Reducer<
   IHomeStore,
-  ReturnType<typeof actions.makeUserFectch | typeof actions.makeUserFectching>
+  ReturnType<typeof actions.makeUserFetch | typeof actions.makeUserFetching>
 > = (
   state = {
     users: [],
