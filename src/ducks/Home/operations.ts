@@ -22,7 +22,7 @@ const getUsers = async (
   page: number,
   nationality: string,
   amountOfRows: number
-): Promise<{ results: IUser[] }> => {
+): Promise<any> => {
   const response = await fetch(
     `https://randomuser.me/api/?nat=${nationality}&page=${page}&results=${amountOfRows}`
   );
