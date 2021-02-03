@@ -37,8 +37,7 @@ const fetchUsers = (
 ) => async (dispatch: Dispatch) => {
   dispatch(actions.makeUserFetching(true));
   const usersResponse = await getUsers(page, nationality, amountOfRows);
-  console.log("usersResponse", usersResponse);
-  dispatch(actions.makeUserFetch(usersResponse?.results || []));
+  return dispatch(actions.makeUserFetch(usersResponse?.results || []));
 };
 
 export default { fetchUsers };
